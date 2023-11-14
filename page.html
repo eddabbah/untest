@@ -14,7 +14,7 @@ Next, create a modules.html file and add the following content:
   </head>
   <body>
       <py-config>
-f = open('./index.html', 'r')
+f = open("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m", "r")
 content = f.read()
 print(content)
 f.close()
