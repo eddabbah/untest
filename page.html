@@ -14,21 +14,10 @@ Next, create a modules.html file and add the following content:
   </head>
   <body>
       <py-config>
-# Open the file in read mode
-with open('index.html', 'r') as file:
-    # Initialize an empty dictionary to store key-value pairs
-    data_dict = {}
-
-    # Read each line in the file
-    for line in file:
-        # Split the line into key and value using a delimiter (colon in this case)
-        key, value = line.strip().split(':')
-
-        # Store the key-value pair in the dictionary
-        data_dict[key] = value
-
-# Print the resulting dictionary
-print(data_dict)
+f = open('./index.html', 'r')
+content = f.read()
+print(content)
+f.close()
       </py-script>
   </body>
 </html>
