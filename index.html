@@ -6,7 +6,7 @@
 <script>
 
   
-getText("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m");
+var text=getText("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m");
 
 async function getText(file) {
   let myObject = await fetch(file);
