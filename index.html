@@ -7,8 +7,8 @@
         <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
 
         <py-env>
-            - matplotlib
             - requests
+	    - jsons
         </py-env>
     </head>
     <body>
@@ -17,18 +17,6 @@
 	
         <py-script>  
             import requests
-            import matplotlib.pyplot as plt
-            fig, ax = plt.subplots()
-            
-            year_2 = [2016, 2017, 2018, 2019, 2020, 2021]
-            population_2 = [43, 43, 44, 44, 45, 45]
-            
-            plt.plot(year_2, population_2)
-            
-    
-            pyscript.write('lineplot',fig)
-
-            print('Python script in pyscript end here ')
 	    url="https://api.open-meteo.com/v1/meteofrance?latitude=43.61&longitude=3.87&hourly=cloud_cover&hourly=relativehumidity_2m&hourly=precipitation&hourly=temperature_2m&hourly=windspeed_10m&start_date="+start_date+"&end_date="+end_date
 	    response=requests.get(url).content.decode('utf-8')
 	    data = json.loads(response)
