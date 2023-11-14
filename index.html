@@ -29,7 +29,11 @@
             pyscript.write('lineplot',fig)
 
             print('Python script in pyscript end here ')
-                
+	    url="https://api.open-meteo.com/v1/meteofrance?latitude=43.61&longitude=3.87&hourly=cloud_cover&hourly=relativehumidity_2m&hourly=precipitation&hourly=temperature_2m&hourly=windspeed_10m&start_date="+start_date+"&end_date="+end_date
+	    response=requests.get(url).content.decode('utf-8')
+	    data = json.loads(response)
+	    temperatureliste=data["hourly"]["temperature_2m"]
+	    print("la temperature est",temperatureliste[0])
         </py-script>
     </body>
 </html>
