@@ -1,54 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hello World!</title>
-    <!-- linking to PyScript assets -->
-    <link rel="stylesheet" href="https://pyscript.net/releases/2022.12.1/pyscript.css" />
-    <script defer src="https://pyscript.net/releases/2022.12.1/pyscript.js"></script>
-      <py-env>
+
+<html>
+    <head>
+        <title>Educative PyScript Answers</title>
+  
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+        <py-env>
+            - matplotlib
             - requests
-      </py-env>
-  </head>
-  <body>
-  <!-- Put Python code inside the the <py-script> tag -->
-    <py-script>
-import requests
-from datetime import datetime , timedelta
-import json
-from statistics import mean
-from PIL import Image, ImageDraw, ImageFont, ImageColor
+        </py-env>
+    </head>
+    <body>
+        <h1> Plotting a graph </h1>
+        <div id="lineplot"> </div> 
+	
+        <py-script>  
+            import requests
+            import matplotlib.pyplot as plt
+            fig, ax = plt.subplots()
+            
+            year_2 = [2016, 2017, 2018, 2019, 2020, 2021]
+            population_2 = [43, 43, 44, 44, 45, 45]
+            
+            plt.plot(year_2, population_2)
+            
+    
+            pyscript.write('lineplot',fig)
 
-
-def dataclean(dataliste):
-    for i in range(len(dataliste)):
-        if(dataliste[i]==None):
-            dataliste[i]=dataliste[i-1]
-    return dataliste
-
-
-presentday=datetime.today()
-start_date=presentday.strftime("%Y-%m-%d")
-end_date = presentday + timedelta(4)
-end_date=end_date.strftime("%Y-%m-%d")
-j=[]
-nj=[]
-j.append(presentday)
-nj.append(j[0].strftime("%A"))
-for i in range(4):
-  j.append(presentday + timedelta(i+1))
-  nj.append(j[i+1].strftime("%A"))
-print(nj)
-
-n_start_date=presentday.strftime("%A")
-
-
-print(start_date)
-print(end_date)
-url="https://api.open-meteo.com/v1/meteofrance?latitude=43.61&longitude=3.87&hourly=cloud_cover&hourly=relativehumidity_2m&hourly=precipitation&hourly=temperature_2m&hourly=windspeed_10m&start_date="+start_date+"&end_date="+end_date
-response=requests.get(url).content.decode('utf-8')
-data = json.loads(response)
-    </py-script>
-  </body>
+            print('Python script in pyscript end here ')
+                
+        </py-script>
+    </body>
 </html>
