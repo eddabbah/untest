@@ -2,24 +2,32 @@
 <html>
     <head>
         <title>Educative PyScript Answers</title>
-        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-        <py-env>
-        - requests
-	- jsons
-        </py-env>
+
     </head>
     <body>
-        <h1> Plotting a graph </h1>
-        <div id="lineplot"> </div> 
+<js>
 	
-        <py-script>  
-            import requests
-	    url="https://api.open-meteo.com/v1/meteofrance?latitude=43.61&longitude=3.87&hourly=cloud_cover&hourly=relativehumidity_2m&hourly=precipitation&hourly=temperature_2m&hourly=windspeed_10m&start_date="+start_date+"&end_date="+end_date
-	    response=requests.get(url).content.decode('utf-8')
-	    data = json.loads(response)
-	    temperatureliste=data["hourly"]["temperature_2m"]
-	    print("la temperature est",temperatureliste[0])
-        </py-script>
+async function postJSON(data) {
+url="https://api.open-meteo.com/v1/meteofrance?latitude=43.61&longitude=3.87&hourly=cloud_cover&hourly=relativehumidity_2m&hourly=precipitation&hourly=temperature_2m&hourly=windspeed_10m&start_date="+start_date+"&end_date="+end_date
+  
+try {
+    const response = await fetch(url, {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    console.log("Success:", result);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+const data = { username: "example" };
+postJSON(data);
+</js>
     </body>
 </html>
